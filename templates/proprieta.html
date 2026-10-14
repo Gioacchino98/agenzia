@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenzia Immobiliare Greco - Proprietà</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #d4af37;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --finance-bg: #e9ecef;
+        }
+
+        /* Navigazione Integrata */
+        nav {
+            background-color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        .logo span { color: var(--accent-color); }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding-top: 80px; /* Spazio per la navbar fissa */
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .container-custom {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border: none;
+        }
+
+        .property-details {
+            padding: 1.5rem;
+        }
+
+        .property-price {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-item img {
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 20px;
+            background-size: 50%;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 20px;
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .finance-box {
+            background-color: var(--finance-bg);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .finance-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-finance {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-finance:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-direction: column; }
+            nav ul { margin-top: 10px; }
+            nav ul li { margin: 0 10px; }
+            body { padding-top: 130px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Greco <span>Immobiliare</span></div>
+            <ul>
+                <li><a href="agenziaimmobiliaregreco.html">Home</a></li>
+                <li><a href="proprieta.html">Proprietà</a></li>
+                <li><a href="Lavoraconnoi.html">Lavora con noi</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+        <div class="mt-4">
+            <h1 class="display-4 fw-bold">Le Nostre Proprietà</h1>
+            <p class="lead">Soluzioni industriali, agricole e residenziali di alto livello</p>
+        </div>
+    </header>
+
+    <div class="container-custom">
+        <h2 class="mb-4">Proprietà in Evidenza</h2>
+
+        <div class="property-card">
+            <div id="carouselCapannone" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfn4fQ6YPERhXQgfeJIAKLluUTeAChpG29ZQ&s" class="d-block w-100" alt="Interno">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.ferraricontract.com/wp-content/uploads/2023/06/consorzio-piccoli-frutti-9.jpg" class="d-block w-100" alt="Logistica">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCapannone" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Precedente</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCapannone" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Successiva</span>
+                </button>
+            </div>
+
+            <div class="property-details">
+                <div class="property-price">€ 3.500 / mese</div>
+                <span class="badge bg-warning text-dark mb-2">Disponibile Subito</span>
+                <h3>Capannone Industriale 1000 mq</h3>
+                <div class="property-features mt-3">
+                    <span>🏭 1000 m²</span>
+                    <span>📍 Zona Ind.</span>
+                    <span>🚚 Accesso Tir</span>
+                </div>
+
+                <div class="finance-box">
+                    <p class="finance-title">💰 Opzioni di Leasing & Finanziamento</p>
+                    <p class="small mb-2">Offriamo soluzioni su misura per aziende e professionisti con tassi agevolati.</p>
+                    <button class="btn-finance" onclick="alert('Verrai ricontattato dal nostro consulente finanziario per questo immobile.')">Calcola Rata Leasing</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card">
+            <div id="carouselVilla" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQOhA1-M2LhNWMCHSEiL9M5Y6HM98jsRXHNA&s" class="d-block w-100" alt="Villa">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.latuacasasulmare.it/files/201809/03/vista%20mare-3.jpg" class="d-block w-100" alt="Panorama">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselVilla" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Precedente</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselVilla" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Successiva</span>
+                </button>
+            </div>
+
+            <div class="property-details">
+                <div class="property-price">€ 3.500.000</div>
+                <span class="badge bg-warning text-dark mb-2">In primo piano</span>
+                <h3>Esclusiva Villa in Riva al Mare</h3>
+                <div class="property-features mt-3">
+                    <span>🌊 800 m²</span>
+                    <span>📍 Zona Balneare</span>
+                    <span>🚤 Accesso con Barca</span>
+                </div>
+
+                <div class="finance-box">
+                    <div class="d-md-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="finance-title mb-1">🏦 Mutuo Agevolato</p>
+                            <p class="small mb-md-0">Finanzia fino all'80% del valore dell'immobile in collaborazione con i principali istituti.</p>
+                        </div>
+                        <button class="btn-finance" data-bs-toggle="modal" data-bs-target="#financeModal">Richiedi Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="financeModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Finanziamento Personalizzato</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" placeholder="Inserisci il tuo nome">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Anticipo Previsto (€)</label>
+                <input type="number" class="form-control" placeholder="es. 500.000">
+              </div>
+              <p class="text-muted small">I nostri esperti ti risponderanno entro 24 ore con un piano ammortamento dettagliato.</p>
+              <button type="button" class="btn btn-primary w-100" style="background-color: var(--primary-color);">Invia Richiesta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Agenzia Immobiliare Greco | Professionalità e Passione
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

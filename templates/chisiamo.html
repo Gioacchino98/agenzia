@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greco Immobiliare - Canicattì</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Stili per la Navigazione Integrata */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo { font-size: 24px; font-weight: bold; color: #333; }
+        .logo span { color: #0d6efd; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: #0d6efd; }
+
+        /* Stili esistenti */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://media-cdn.tripadvisor.com/media/photo-s/04/9e/a3/ca/la-villa-vista-dal-vigneto.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 0 120px 0; /* Aumentato padding superiore per la navbar fissa */
+        }
+        .section-padding { padding: 60px 0; }
+        .feature-box { border-left: 4px solid #0d6efd; padding-left: 20px; margin-bottom: 30px; }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Responsive per menu */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-direction: column; }
+            nav ul { margin-top: 10px; }
+            nav ul li { margin: 0 10px; }
+            .hero-section { padding-top: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Greco <span>Immobiliare</span></div>
+            <ul>
+                <li><a href="agenziaimmobiliaregreco.html">Home</a></li>
+                <li><a href="proprieta.html">Proprietà</a></li>
+                <li><a href="Lavoraconnoi.html">Lavora con noi</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Greco Immobiliare</h1>
+            <p class="lead fs-4">Innovazione, Competenza Giuridica e Tecnologia al tuo servizio.</p>
+        </div>
+    </div>
+
+    <section class="container section-padding">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h2 class="text-primary mb-4">La nostra agenzia</h2>
+                <p class="lead">
+                    Greco Immobiliare è un'agenzia che fin dalla sua fondazione ha dimostrato un'eccezionale capacità di innovazione e crescita nel settore immobiliare.
+                    Nata dall'iniziativa di un giovane geometra appassionato per la giurisprudenza, l'agenzia ha guadagnato rapidamente la fiducia di una vasta clientela grazie a una profonda competenza tecnico-giuridica.
+                </p>
+                <p>
+                    Grazie alle competenze del <strong>Geom. Greco Gioacchino</strong> acquisite presso l'Albo dei Geometri di Agrigento, la laurea in Scienze dei Servizi Giuridici e la specializzazione in <em>Web Development & A.I.</em> presso la Steve Jobs Academy, offriamo un approccio digitale unico nel mercato.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6 feature-box">
+                <h3>Collaborazioni Strategiche</h3>
+                <p>Collaboriamo con i migliori studi notarili per assistervi dal compromesso al rogito. Il nostro team interno di tecnici e giuristi garantisce transazioni sicure e conformi alla legge.</p>
+            </div>
+            <div class="col-md-6 feature-box">
+                <h3>Presenza Online & Marketing</h3>
+                <p>Gestiamo oltre 3000 proprietà in tutta la Sicilia con strategie mirate su Facebook, TikTok, Immobiliare.it, Idealista e Casa.it per la massima visibilità.</p>
+            </div>
+            <div class="col-md-6 feature-box">
+                <h3>Strumenti all'avanguardia</h3>
+                <p>Utilizziamo gestionali leader come Getrix e Apimo. Accediamo in tempo reale ai portali dell'Agenzia delle Entrate per visure ipotecarie e catastali immediate.</p>
+            </div>
+            <div class="col-md-6 feature-box">
+                <h3>Focus sul Cliente</h3>
+                <p>Acccompagniamo il cliente in ogni fase burocratica senza alcun impegno contrattuale preventivo: la vostra soddisfazione è il nostro vero successo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h2 class="text-primary">Dove trovarci</h2>
+                    <p class="lead">Vieni a trovarci nel cuore di Canicattì. Siamo a tua disposizione per consulenze tecniche e immobiliari.</p>
+                    <p><strong>Indirizzo:</strong><br>Corso Umberto I, 67<br>92024 Canicattì (AG)</p>
+                   <a href="https://www.google.com/maps/dir/?api=1&destination=Corso+Umberto+I+67+Canicattì+AG" target="_blank" class="btn btn-primary px-4 py-2 fw-bold">Ottieni indicazioni</a>
+                </div>
+                <div class="col-lg-8">
+                    <div class="map-container shadow">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3159.444634289885!2d13.8475276!3d37.3556485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13109a2472948e5b%3A0xc07a827457a41a31!2sCorso%20Umberto%20I%2C%2067%2C%2092024%20Canicatt%C3%AC%20AG!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-dark text-white p-5 text-center">
+        <h2 class="fw-bold">Contattaci</h2>
+        <p class="mb-1">Corso Umberto I, 67 - 92024 Canicattì (AG)</p>
+        <p class="mb-1"><strong>Telefono:</strong> 370 127 7895</p>
+        <p class="small text-secondary">P.Iva: 378293819344</p>
+    </div>
+
+    <section class="container section-padding">
+        <div class="row justify-content-center">
+            <div class="col-md-6 shadow-sm p-4 rounded bg-light">
+                <h2 class="mb-4 text-center">Richiedi Informazioni</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome Completo</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="nome@esempio.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="messaggio" class="form-label">Come possiamo aiutarti?</label>
+                        <textarea class="form-control" id="messaggio" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="privacy" required>
+                        <label class="form-check-label" for="privacy">Accetto la privacy policy ai sensi del GDPR.</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Invia Richiesta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 border-top">
+        <p>© 2026 Greco Immobiliare - Tutti i diritti riservati.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

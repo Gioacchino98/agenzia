@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pannello Amministratore - Inserisci Immobile</title>
+    <style>
+        form { max-width: 500px; margin: 20px auto; display: flex; flex-direction: column; gap: 10px; }
+        input, select, textarea, button { padding: 8px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Nuovo Immobile</h2>
+
+    <form id="form-immobile">
+        <input type="text" id="titolo" placeholder="Titolo (es. Attico Vista Mare)" required>
+
+        <select id="tipo_contratto" required>
+            <option value="vendita">Vendita</option>
+            <option value="affitto">Affitto</option>
+        </select>
+
+        <select id="tipologia" required>
+            <option value="appartamento condominiale">Appartamento condominiale</option>
+            <option value="terreno agricolo">terreno agricolo</option>
+            <option value="terreno edificabile">terreno edificabile</option>
+            <option value="palazzo baronale">palazzo baronale</option>
+            <option value="ufficio">ufficio</option>
+            <option value="">Appartamento</option>
+            <option value="casa indipendente">casa indipendente</option>
+            <option value="garage">garage</option>
+            <option value="box auto">box auto</option>
+            <option value="attico">attico</option>
+            <option value="mansarda">mansarda</option>
+            <option value="sottotetto">sottotetto</option>
+            <option value="cantina">Cantina</option>
+            <option value="casa vacanza">Casa Vacanza</option>
+            <option value="villa">Villa</option>
+            <option value="villa al mare">Villa al mare</option>
+            <option value="villa in montagna">Villa in montagna</option>
+            <option value="villetta">Villetta</option>
+            <option value="capannone">Capannone</option>
+        </select>
+
+        <input type="text" id="via" placeholder="Via/Piazza" required>
+        <input type="text" id="civico" placeholder="Numero Civico" required>
+        <input type="number" step="0.01" id="prezzo" placeholder="Prezzo (€)">
+        <textarea id="descrizione" placeholder="Descrizione dell'immobile"></textarea>
+        <input type="text" id="immagini" placeholder="URL o Nomi immagini (es. foto1.jpg, foto2.jpg)">
+        <input type="url" id="video_url" placeholder="Link Video/Tutorial (es. YouTube)">
+
+        <button type="submit">Aggiungi Immobile</button>
+    </form>
+
+    <script>
+        document.getElementById('form-immobile').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nuovoImmobile = {
+                titolo: document.getElementById('titolo').value,
+                tipo_contratto: document.getElementById('tipo_contratto').value,
+                tipologia: document.getElementById('tipologia').value,
+                via: document.getElementById('via').value,
+                civico: document.getElementById('civico').value,
+                prezzo: parseFloat(document.getElementById('prezzo').value) || 0, // <-- Corretto qui
+                descrizione: document.getElementById('descrizione').value,
+                immagini: document.getElementById('immagini').value,
+                video_url: document.getElementById('video_url').value
+            };
+
+            try {
+                const res = await fetch('http://127.0.0.1:5000/api/immobili', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(nuovoImmobile)
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    alert('Immobile aggiunto con successo!');
+                    document.getElementById('form-immobile').reset();
+                } else {
+                    alert('Errore dal server: ' + (data.error || 'Sconosciuto'));
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Errore di connessione: ' + err.message);
+            }
+        });
+    </script>
