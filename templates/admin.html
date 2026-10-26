@@ -2,90 +2,302 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Pannello Amministratore - Inserisci Immobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pannello Amministratore - Greco Immobiliare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        form { max-width: 500px; margin: 20px auto; display: flex; flex-direction: column; gap: 10px; }
-        input, select, textarea, button { padding: 8px; font-size: 16px; }
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #d4af37;
+            --bg-light: #f4f4f4;
+        }
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+        .header-admin {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .card-custom {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            background: white;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
 
-    <h2 style="text-align: center;">Nuovo Immobile</h2>
+    <div class="container">
+        <div class="header-admin d-flex justify-content-between align-items-center">
+            <h2>🛠️ Pannello Amministratore</h2>
+            <div>
+                <a href="/" class="btn btn-outline-light btn-sm me-2">Home</a>
+                <a href="/proprieta" class="btn btn-outline-light btn-sm">Vai alle Proprietà</a>
+            </div>
+        </div>
 
-    <form id="form-immobile">
-        <input type="text" id="titolo" placeholder="Titolo (es. Attico Vista Mare)" required>
+        <div class="row">
+            <!-- Form Inserimento / Modifica Immobile -->
+            <div class="col-lg-5">
+                <div class="card-custom">
+                    <h4 class="mb-3 text-primary" id="form-title">Aggiungi Nuovo Immobile</h4>
 
-        <select id="tipo_contratto" required>
-            <option value="vendita">Vendita</option>
-            <option value="affitto">Affitto</option>
-        </select>
+                    <form id="form-immobile" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="titolo" class="form-label">Titolo Annuncio</label>
+                            <input type="text" class="form-control" id="titolo" placeholder="es. Attico Vista Mare" required>
+                        </div>
 
-        <select id="tipologia" required>
-            <option value="appartamento condominiale">Appartamento condominiale</option>
-            <option value="terreno agricolo">terreno agricolo</option>
-            <option value="terreno edificabile">terreno edificabile</option>
-            <option value="palazzo baronale">palazzo baronale</option>
-            <option value="ufficio">ufficio</option>
-            <option value="">Appartamento</option>
-            <option value="casa indipendente">casa indipendente</option>
-            <option value="garage">garage</option>
-            <option value="box auto">box auto</option>
-            <option value="attico">attico</option>
-            <option value="mansarda">mansarda</option>
-            <option value="sottotetto">sottotetto</option>
-            <option value="cantina">Cantina</option>
-            <option value="casa vacanza">Casa Vacanza</option>
-            <option value="villa">Villa</option>
-            <option value="villa al mare">Villa al mare</option>
-            <option value="villa in montagna">Villa in montagna</option>
-            <option value="villetta">Villetta</option>
-            <option value="capannone">Capannone</option>
-        </select>
+                        <div class="mb-3">
+                            <label for="tipo_contratto" class="form-label">Tipo Contratto</label>
+                            <select class="form-select" id="tipo_contratto" required>
+                                <option value="vendita">Vendita</option>
+                                <option value="affitto">Affitto</option>
+                            </select>
+                        </div>
 
-        <input type="text" id="via" placeholder="Via/Piazza" required>
-        <input type="text" id="civico" placeholder="Numero Civico" required>
-        <input type="number" step="0.01" id="prezzo" placeholder="Prezzo (€)">
-        <textarea id="descrizione" placeholder="Descrizione dell'immobile"></textarea>
-        <input type="text" id="immagini" placeholder="URL o Nomi immagini (es. foto1.jpg, foto2.jpg)">
-        <input type="url" id="video_url" placeholder="Link Video/Tutorial (es. YouTube)">
+                        <div class="mb-3">
+                            <label for="tipologia" class="form-label">Tipologia</label>
+                            <select class="form-select" id="tipologia" required>
+                                <option value="appartamento condominiale">Appartamento condominiale</option>
+                                <option value="terreno agricolo">Terreno agricolo</option>
+                                <option value="terreno edificabile">Terreno edificabile</option>
+                                <option value="palazzo baronale">Palazzo baronale</option>
+                                <option value="ufficio">Ufficio</option>
+                                <option value="appartamento">Appartamento</option>
+                                <option value="casa indipendente">Casa indipendente</option>
+                                <option value="garage">Garage</option>
+                                <option value="box auto">Box auto</option>
+                                <option value="attico">Attico</option>
+                                <option value="mansarda">Mansarda</option>
+                                <option value="sottotetto">Sottotetto</option>
+                                <option value="cantina">Cantina</option>
+                                <option value="casa vacanza">Casa Vacanza</option>
+                                <option value="villa">Villa</option>
+                                <option value="villa al mare">Villa al mare</option>
+                                <option value="villa in montagna">Villa in montagna</option>
+                                <option value="villetta">Villetta</option>
+                                <option value="capannone">Capannone</option>
+                            </select>
+                        </div>
 
-        <button type="submit">Aggiungi Immobile</button>
-    </form>
+                        <div class="row">
+                            <div class="col-8 mb-3">
+                                <label for="via" class="form-label">Via/Piazza</label>
+                                <input type="text" class="form-control" id="via" placeholder="Via Roma" required>
+                            </div>
+                            <div class="col-4 mb-3">
+                                <label for="civico" class="form-label">Civico</label>
+                                <input type="text" class="form-control" id="civico" placeholder="12" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="prezzo" class="form-label">Prezzo (€)</label>
+                            <input type="number" step="0.01" class="form-control" id="prezzo" placeholder="es. 250000">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descrizione" class="form-label">Descrizione</label>
+                            <textarea class="form-control" id="descrizione" rows="3" placeholder="Descrizione dettagliata..."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="immagini" class="form-label">Carica Altre Foto (Multiplo)</label>
+                            <input type="file" class="form-control" id="immagini" accept="image/*" multiple>
+                            <div class="form-text">Se modifichi un immobile, le nuove foto si aggiungeranno a quelle già esistenti.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="video_file" class="form-label">Carica Video (Opzionale)</label>
+                            <input type="file" class="form-control" id="video_file" accept="video/*">
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100 mt-2" id="btn-submit-form">Aggiungi Immobile</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tabella Gestione ed Eliminazione -->
+            <div class="col-lg-7">
+                <div class="card-custom">
+                    <h4 class="mb-3 text-danger">Gestione & Modifica Immobili</h4>
+                    <p class="text-muted small">Elenco degli immobili nel database. Puoi modificarli per aggiungere altre foto o eliminarli.</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Titolo</th>
+                                    <th>Prezzo</th>
+                                    <th class="text-center">Azioni</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabella-admin-immobili">
+                                <tr>
+                                    <td colspan="4" class="text-center py-4">Caricamento elenco...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        document.addEventListener("DOMContentLoaded", caricaTabellaAdmin);
+        let immobileInModificaId = null;
+
+        async function caricaTabellaAdmin() {
+            const tbody = document.getElementById('tabella-admin-immobili');
+            try {
+                const res = await fetch('http://127.0.0.1:5000/api/immobili');
+                const immobili = await res.json();
+
+                if (!Array.isArray(immobili) || immobili.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-muted">Nessun immobile nel database.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = '';
+                immobili.forEach(immobile => {
+                    const prezzoFormattato = immobile.prezzo
+                        ? `€ ${Number(immobile.prezzo).toLocaleString('it-IT')}`
+                        : 'N.D.';
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><strong>#${immobile.id}</strong></td>
+                        <td>${immobile.titolo || 'Senza titolo'}</td>
+                        <td>${prezzoFormattato}</td>
+                        <td class="text-center">
+                            <button class="btn btn-outline-primary btn-sm me-1 mb-1" onclick='preparaModifica(${JSON.stringify(immobile)})'>
+                                ✏️ Modifica
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm mb-1" onclick="eliminaImmobileAdmin(${immobile.id})">
+                                🗑️ Elimina
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) {
+                console.error("Errore:", err);
+                tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-danger">Errore di connessione al server.</td></tr>`;
+            }
+        }
+
+        function preparaModifica(immobile) {
+            immobileInModificaId = immobile.id;
+            document.getElementById('titolo').value = immobile.titolo || '';
+            document.getElementById('tipo_contratto').value = immobile.tipo_contratto || 'vendita';
+            document.getElementById('tipologia').value = immobile.tipologia || '';
+            document.getElementById('via').value = immobile.via || '';
+            document.getElementById('civico').value = immobile.civico || '';
+            document.getElementById('prezzo').value = immobile.prezzo || '';
+            document.getElementById('descrizione').value = immobile.descrizione || '';
+
+            document.getElementById('form-title').textContent = `Modifica Immobile #${immobile.id}`;
+            const btnSubmit = document.getElementById('btn-submit-form');
+            btnSubmit.textContent = "Salva Modifiche (Aggiungi Foto)";
+            btnSubmit.className = "btn btn-warning w-100 mt-2 fw-bold text-dark";
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         document.getElementById('form-immobile').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const nuovoImmobile = {
-                titolo: document.getElementById('titolo').value,
-                tipo_contratto: document.getElementById('tipo_contratto').value,
-                tipologia: document.getElementById('tipologia').value,
-                via: document.getElementById('via').value,
-                civico: document.getElementById('civico').value,
-                prezzo: parseFloat(document.getElementById('prezzo').value) || 0, // <-- Corretto qui
-                descrizione: document.getElementById('descrizione').value,
-                immagini: document.getElementById('immagini').value,
-                video_url: document.getElementById('video_url').value
-            };
+            const formData = new FormData();
+            formData.append('titolo', document.getElementById('titolo').value);
+            formData.append('tipo_contratto', document.getElementById('tipo_contratto').value);
+            formData.append('tipologia', document.getElementById('tipologia').value);
+            formData.append('via', document.getElementById('via').value);
+            formData.append('civico', document.getElementById('civico').value);
+            formData.append('prezzo', document.getElementById('prezzo').value);
+            formData.append('descrizione', document.getElementById('descrizione').value);
+
+            const fileInput = document.getElementById('immagini');
+            for (let i = 0; i < fileInput.files.length; i++) {
+                formData.append('immagini', fileInput.files[i]);
+            }
+
+            const videoInput = document.getElementById('video_file');
+            if (videoInput.files.length > 0) {
+                formData.append('video_file', videoInput.files[0]);
+            }
+
+            let url = 'http://127.0.0.1:5000/api/immobili';
+            let method = 'POST';
+
+            if (immobileInModificaId !== null) {
+                url = `http://127.0.0.1:5000/api/immobili/${immobileInModificaId}`;
+                method = 'PUT';
+            }
 
             try {
-                const res = await fetch('http://127.0.0.1:5000/api/immobili', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(nuovoImmobile)
+                const res = await fetch(url, {
+                    method: method,
+                    body: formData
                 });
 
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    alert('Immobile aggiunto con successo!');
+                    alert(immobileInModificaId !== null ? 'Immobile modificato e nuove foto aggiunte!' : 'Immobile inserito con successo!');
+
                     document.getElementById('form-immobile').reset();
+                    immobileInModificaId = null;
+                    document.getElementById('form-title').textContent = "Aggiungi Nuovo Immobile";
+                    const btnSubmit = document.getElementById('btn-submit-form');
+                    btnSubmit.textContent = "Aggiungi Immobile";
+                    btnSubmit.className = "btn btn-dark w-100 mt-2";
+
+                    caricaTabellaAdmin();
                 } else {
                     alert('Errore dal server: ' + (data.error || 'Sconosciuto'));
                 }
             } catch (err) {
                 console.error(err);
-                alert('Errore di connessione: ' + err.message);
+                alert('Errore di connessione al server.');
             }
         });
+
+        async function eliminaImmobileAdmin(id) {
+            if (!confirm(`Sei sicuro di voler eliminare l'immobile #${id}? Verrà rimosso anche dalla pagina pubblica.`)) {
+                return;
+            }
+
+            try {
+                const res = await fetch(`http://127.0.0.1:5000/api/immobili/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    alert('Immobile eliminato correttamente!');
+                    caricaTabellaAdmin();
+                } else {
+                    alert('Errore durante l\'eliminazione.');
+                }
+            } catch (err) {
+                console.error("Errore:", err);
+                alert('Errore di connessione al server.');
+            }
+        }
     </script>
+</body>
+</html>

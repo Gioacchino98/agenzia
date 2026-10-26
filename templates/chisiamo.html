@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greco Immobiliare - Canicattì</title>
+    <title>Greco Immobiliare - Chi Siamo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Stili per la Navigazione Integrata */
@@ -31,14 +31,14 @@
         }
         nav ul li a:hover { color: #0d6efd; }
 
-        /* Stili esistenti */
+        /* Stili Sezioni */
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                         url('https://media-cdn.tripadvisor.com/media/photo-s/04/9e/a3/ca/la-villa-vista-dal-vigneto.jpg');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 180px 0 120px 0; /* Aumentato padding superiore per la navbar fissa */
+            padding: 180px 0 120px 0;
         }
         .section-padding { padding: 60px 0; }
         .feature-box { border-left: 4px solid #0d6efd; padding-left: 20px; margin-bottom: 30px; }
@@ -66,11 +66,12 @@
         <nav>
             <div class="logo">Greco <span>Immobiliare</span></div>
             <ul>
-                <li><a href="agenziaimmobiliaregreco.html">Home</a></li>
-                <li><a href="proprieta.html">Proprietà</a></li>
-                <li><a href="Lavoraconnoi.html">Lavora con noi</a></li>
-                <li><a href="chisiamo.html">Chi Siamo</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/proprieta">Proprietà</a></li>
+                <li><a href="/lavoraconnoi">Lavora con noi</a></li>
+                <li><a href="/chisiamo">Chi Siamo</a></li>
+                <li><a href="/contatti">Contatti</a></li>
+                <li><a href="/admin">Admin</a></li>
             </ul>
         </nav>
     </header>
@@ -111,7 +112,7 @@
             </div>
             <div class="col-md-6 feature-box">
                 <h3>Focus sul Cliente</h3>
-                <p>Acccompagniamo il cliente in ogni fase burocratica senza alcun impegno contrattuale preventivo: la vostra soddisfazione è il nostro vero successo.</p>
+                <p>Accompagniamo il cliente in ogni fase burocratica senza alcun impegno contrattuale preventivo: la vostra soddisfazione è il nostro vero successo.</p>
             </div>
         </div>
     </section>
@@ -153,18 +154,19 @@
         <div class="row justify-content-center">
             <div class="col-md-6 shadow-sm p-4 rounded bg-light">
                 <h2 class="mb-4 text-center">Richiedi Informazioni</h2>
-                <form>
+                <!-- FORM CORRETTO CON ACTION E METHOD -->
+                <form action="/contatti" method="POST">
                     <div class="mb-3">
                         <label for="nome" class="form-label">Nome Completo</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il tuo nome" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="nome@esempio.com">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="nome@esempio.com" required>
                     </div>
                     <div class="mb-3">
                         <label for="messaggio" class="form-label">Come possiamo aiutarti?</label>
-                        <textarea class="form-control" id="messaggio" rows="4"></textarea>
+                        <textarea class="form-control" id="messaggio" name="messaggio" rows="4" required></textarea>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="privacy" required>

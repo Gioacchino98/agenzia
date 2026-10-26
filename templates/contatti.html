@@ -32,8 +32,8 @@
         }
         nav ul li a:hover { color: #0d6efd; }
 
-        /* Stili esistenti della pagina */
-        body { padding-top: 80px; } /* Spazio per la navbar fissa */
+        /* Stili della pagina */
+        body { padding-top: 80px; }
 
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -66,11 +66,12 @@
         <nav>
             <div class="logo">Greco <span>Immobiliare</span></div>
             <ul>
-                <li><a href="agenziaimmobiliaregreco.html">Home</a></li>
-                <li><a href="proprieta.html">Proprietà</a></li>
-                <li><a href="Lavoraconnoi.html">Lavora con noi</a></li>
-                <li><a href="chisiamo.html">Chi Siamo</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/proprieta">Proprietà</a></li>
+                <li><a href="/lavoraconnoi">Lavora con noi</a></li>
+                <li><a href="/chisiamo">Chi Siamo</a></li>
+                <li><a href="/contatti">Contatti</a></li>
+                <li><a href="/admin">Admin</a></li>
             </ul>
         </nav>
     </header>
@@ -88,15 +89,20 @@
                 <div class="card shadow-sm border-0 p-4">
                     <h2 class="h4 mb-4 text-center">Lascia i tuoi dati, ti ricontatteremo</h2>
 
-                    <form>
+                    <form id="form-contatti">
                         <div class="mb-3">
                             <label for="nome" class="form-label fw-semibold">Nome e cognome</label>
-                            <input type="text" class="form-control form-control-lg" id="nome" placeholder="Inserisci il tuo nome">
+                            <input type="text" class="form-control form-control-lg" id="nome" placeholder="Inserisci il tuo nome" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold">Email</label>
-                            <input type="email" class="form-control form-control-lg" id="email" placeholder="nome@esempio.com">
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="nome@esempio.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label fw-semibold">Telefono</label>
+                            <input type="tel" class="form-control form-control-lg" id="telefono" placeholder="+39 333 1234567">
                         </div>
 
                         <div class="mb-3">
@@ -113,11 +119,11 @@
 
                         <div class="mb-3">
                             <label for="messaggio" class="form-label fw-semibold">Messaggio</label>
-                            <textarea class="form-control" id="messaggio" rows="4" placeholder="Come possiamo aiutarti?"></textarea>
+                            <textarea class="form-control" id="messaggio" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
                         </div>
 
                         <div class="mb-4 form-check">
-                            <input type="checkbox" class="form-check-input" id="privacy">
+                            <input type="checkbox" class="form-check-input" id="privacy" required>
                             <label class="form-check-label small text-muted" for="privacy">
                                 Accetto la privacy policy ai sensi del GDPR.
                             </label>
@@ -155,5 +161,37 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('form-contatti').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const contatto = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value || '',
+                messaggio: document.getElementById('messaggio').value
+            };
+
+            try {
+                const res = await fetch('http://127.0.0.1:5000/api/contatti', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(contatto)
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    alert('Messaggio inviato con successo! Ti ricontatteremo al più presto.');
+                    document.getElementById('form-contatti').reset();
+                } else {
+                    alert('Errore: ' + (data.error || 'Impossibile inviare il messaggio.'));
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Errore di connessione al server.');
+            }
+        });
+    </script>
 </body>
 </html>
